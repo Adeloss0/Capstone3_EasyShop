@@ -64,7 +64,7 @@ public class CategoriesController
     // add annotation to call this method for a POST action--COMPLETE
     @PostMapping()
     // add annotation to ensure that only an ADMIN can call this function
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+   @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Category addCategory(@RequestBody Category category) {
         try{
             return categoryDao.create(category);
@@ -80,7 +80,7 @@ public class CategoriesController
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
     @PutMapping("{id}")
     // add annotation to ensure that only an ADMIN can call this function--COMPLETE
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public HashMap<String, String> updateCategory(@PathVariable int id, @RequestBody Category category){
         categoryDao.update(id, category);
 
@@ -102,7 +102,7 @@ public class CategoriesController
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
     @DeleteMapping("{id}")
     // add annotation to ensure that only an ADMIN can call this function--COMPLETE
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+  //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public HashMap<String, String> deleteCategory(@PathVariable int id){
         categoryDao.delete(id);
         HashMap<String, String> response = new HashMap<>();
